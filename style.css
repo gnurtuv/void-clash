@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow: hidden; /* Prevent scrollbars if start menu is large */
+}
+
+#game-container {
+    position: relative;
+    border: 2px solid #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    width: 600px; /* Match canvas width */
+    height: 400px; /* Match canvas height */
+    display: flex; /* For centering start menu */
+    justify-content: center; /* For centering start menu */
+    align-items: center; /* For centering start menu */
+}
+
+#startMenu {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 40px;
+    border-radius: 10px;
+    z-index: 100; /* Ensure it's on top */
+}
+
+#startMenu h1 {
+    margin-top: 0;
+    font-size: 3em;
+    color: #00FF00; /* Green, like classic arcade */
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#startMenu p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+
+#startGameButton, #restartButton {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#startGameButton:hover, #restartButton:hover {
+    background-color: #3e8e41;
+}
+
+
+#gameCanvas {
+    display: block; /* Will be changed to block by JS */
+    background-color: #000;
+    position: absolute; /* Position canvas behind start menu if needed, or manage display property */
+    top: 0;
+    left: 0;
+}
+
+/* Wrapper for in-game UI elements */
+#game-ui-elements {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 10; /* Above canvas, below game over */
+}
+
+
+#score {
+    font-size: 22px;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    position: absolute; 
+    left: 0; /* Relative to #game-ui-elements */
+    top: 0;   /* Relative to #game-ui-elements */
+}
+#lives {
+    font-size: 22px;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    position: absolute; 
+    right: 0; /* Relative to #game-ui-elements */
+    top: 0;    /* Relative to #game-ui-elements */
+}
+#waveDisplay { /* Already absolutely positioned, should be fine */
+    text-shadow: 1px 1px 2px #000;
+}
+
+
+#gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #555;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    z-index: 200; /* Ensure game over is on top of everything */
+}
+
+#gameOver p { margin: 10px 0; font-size: 20px; }
+
+#bossHealthContainer {
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(255,0,0,0.5);
+    /* Already absolutely positioned relative to #game-container via inline styles */
+    /* Make sure its top is relative to the game area, not overall UI */
+}
+#bossHealthBar { box-sizing: border-box; }
+#bossName { padding-top: 2px; }
